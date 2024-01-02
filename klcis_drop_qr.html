@@ -54,7 +54,7 @@
           <button type="submit" class="btn btn-success btn-block">Checkout</button>
           <button id="generateQRBtn" class="btn btn-secondary btn-block mt-1" onclick="generateQR()">Generate QR Code</button>          
         </form>
-        <div class="mt-2 mb-2" id="qrcode"></div>
+        <center><div class="mt-2 mb-2" id="qrcode"></div></center>
       </div>
          
 </div>
@@ -68,16 +68,21 @@
         var amount = document.getElementById('amountDropdown').value;
         var baseLink = 'https://s2.klinternetservices.com/xendit/payment';
 
-        var qrcodeContainer = document.getElementById('qrcode');
-        qrcodeContainer.innerHTML = '';
+        if (number==''){
+          alert("Number is required.");
+        }else{       
 
-        var paymentLink = baseLink + '?token=' + encodeURIComponent(token) + '&number=' + encodeURIComponent(number) + '&amount=' + encodeURIComponent(amount);
+          var qrcodeContainer = document.getElementById('qrcode');
+          qrcodeContainer.innerHTML = '';
 
-        var qrcode = new QRCode(qrcodeContainer, {
-            text: paymentLink,
-            width: 150,
-            height: 150
-        });
+          var paymentLink = baseLink + '?token=' + encodeURIComponent(token) + '&number=' + encodeURIComponent(number) + '&amount=' + encodeURIComponent(amount);
+
+          var qrcode = new QRCode(qrcodeContainer, {
+              text: paymentLink,
+              width: 180,
+              height: 180
+          });
+      }
     });
 </script>
 
