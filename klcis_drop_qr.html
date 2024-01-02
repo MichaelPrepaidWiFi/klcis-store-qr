@@ -67,12 +67,16 @@
         var number = document.getElementById('numberInput').value;
         var amount = document.getElementById('amountDropdown').value;
         var baseLink = 'https://s2.klinternetservices.com/xendit/payment';
+        var qrcodeContainer = document.getElementById('qrcode');
+       
 
-        if (number==''){
-          alert("Number is required.");
+        if (number=='' || token =='' || amount ==''){
+            qrcodeContainer.innerHTML = '';
+            alert("Token/Number/Amount is required!");
+
         }else{       
 
-          var qrcodeContainer = document.getElementById('qrcode');
+          
           qrcodeContainer.innerHTML = '';
 
           var paymentLink = baseLink + '?token=' + encodeURIComponent(token) + '&number=' + encodeURIComponent(number) + '&amount=' + encodeURIComponent(amount);
